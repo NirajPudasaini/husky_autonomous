@@ -8,37 +8,37 @@ This repository outlines the setup and instructions for implementing SLAM algori
 
 2. **Setup Your ROS Environment**: Configure your shell to source the ROS environment automatically.
 
-'''bash
+```bash
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-'''
+```
 
 3. **Install Dependencies**: Install additional tools and dependencies.
 
-'''bash
+```bash
 sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 sudo rosdep init
 rosdep update
-'''
+```
 
    
 
 ## Setup - Catkin Workspace
 
 1. **Create Catkin Workspace**: Create a workspace for your ROS packages. This is where you will build and manage your ROS packages.
-'''bash
+```bash
 mkdir -p ~/husky_ws/src
 cd ~/husky_ws
 catkin_make
-'''
+```
 
 2. **Source the Workspace**: Source your new setup script to overlay this workspace on top of your environment.
 
-'''bash
+```bash
 echo "source ~/husky_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 markdown
-'''
+```
 
 
 ## Setup - Husky Packages
