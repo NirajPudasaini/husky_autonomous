@@ -1,8 +1,8 @@
 # Husky SLAM Implementation
 
 This repository outlines the setup and instructions for implementing SLAM algorithms on a Husky robot using ROS and Catkin. Initially focusing on simulations, this setup is tested on Ubuntu 20.04.6 LTS with ROS Noetic.
-
-## Setup - ROS
+## Prerequisites 
+### Setup - ROS
 
 1. **Install ROS Noetic**: Ensure you are using Ubuntu 20.04 and install ROS Noetic. You can follow the detailed installation instructions provided on the [ROS Wiki](http://wiki.ros.org/noetic/Installation/Ubuntu).
 
@@ -23,7 +23,7 @@ rosdep update
 
    
 
-## Setup - Catkin Workspace
+### Setup - Catkin Workspace
 
 1. **Create Catkin Workspace**: Create a workspace for your ROS packages. This is where you will build and manage your ROS packages.
 ```bash
@@ -41,7 +41,7 @@ markdown
 ```
 
 
-## Setup - Husky Packages
+### Setup - Husky Packages
 
 1. **Clone Husky Repositories**: Husky-related packages into your workspace.
 rosdep install --from-paths src --ignore-src -r -yd packages into your workspace.
