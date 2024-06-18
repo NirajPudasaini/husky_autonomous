@@ -64,7 +64,7 @@ rosdep install --from-paths src --ignore-src -r -y
 catkin_make
 ```
 
-sanity check
+sanity check (to be written)
 
 ```bash
 ./sanitycheck.sh
