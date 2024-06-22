@@ -61,11 +61,94 @@ rosdep install --from-paths src --ignore-src -r -y
 3. **Build the Workspace**: Compile all packages in your workspace.
 
 ```bash
-catkin_make
+catkin build
 ```
 
 sanity check (to be written)
 
+
+## Husky Frontier Exploration Demo Setup
+
+This section outlines the setup for the Husky Frontier Exploration demo. Follow these steps to simulate the exploration tasks using the Husky robot. For more details, refer to the official [Husky Frontier Exploration Guide](https://www.clearpathrobotics.com/assets/guides/melodic/husky/HuskyFrontiers.html).
+
+### Prerequisites
+
+Before starting, ensure ROS Noetic is installed and configured as outlined in the initial setup. Additionally, install `roslint` and `pcl` which are required for the demo:
+
 ```bash
-./sanitycheck.sh
+# Install roslint
+sudo apt-get install ros-noetic-roslint
+
+# Install Point Cloud Library (PCL)
+sudo apt-get install libpcl-dev
 ```
+
+### Clone the Repository
+
+Clone the `frontier_exploration` repository into your workspace:
+
+```bash
+cd ~/husky_ws/src
+git clone https://github.com/paulbovbel/frontier_exploration.git
+```
+
+### Install Dependencies
+
+Install all required dependencies using `rosdep`. This command is crucial as it ensures all necessary ROS dependencies are met:
+
+```bash
+cd ~/husky_ws
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+### Build the Workspace
+
+```bash
+catkin build
+```
+
+### Source the Workspace
+```bash
+source ~/husky_ws/devel/setup.bash
+```
+
+### Running the Simulation
+
+#### Terminal 1: Start the Husky Simulation Environment
+
+In the first terminal, start the Clearpath-configured Husky simulation in Gazebo, which includes a LiDAR sensor for the robot:
+
+```bash
+export HUSKY_LMS1XX_ENABLED=1; roslaunch husky_gazebo husky_playpen.launch
+```
+
+## Running the Husky Frontier Exploration Demo
+
+Once the installation and setup are complete, you can run the Husky Frontier Exploration demo. You will need to open three separate terminal windows to launch different parts of the simulation. Here are the steps for each:
+
+### Terminal 1: Start the Husky Simulation Environment
+
+In the first terminal, start the Clearpath-configured Husky simulation in Gazebo, which includes a LiDAR sensor for the robot:
+
+```bash
+export HUSKY_LMS1XX_ENABLED=1; roslaunch husky_gazebo husky_playpen.launch
+```
+![Husky Gazebo Simulation](/images/husky_gazebo.png)
+
+### Terminal 2: Launch the RViz Visualizer
+
+In the second terminal, start the RViz visualizer. This tool provides a graphical interface to visualize the robot and its sensors in real-time:
+
+```bash
+roslaunch husky_viz view_robot.launch
+```
+![Husky RViz Simulation](/images/husky_rviz.png)
+
+### Terminal 3: Start the Frontier Exploration Demo
+
+In the third terminal, launch the frontier exploration demo. This will initiate the autonomous exploration behavior:
+
+```bash
+roslaunch husky_navigation exploration_demo.launch
+```
+![Husky Exploration Visualized](/images/exploration.png)
